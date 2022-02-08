@@ -1,3 +1,4 @@
+'use strict'
 // const moment = require("moment");
 let notes = getData();
 const noteTitle = document.getElementById('note-title');

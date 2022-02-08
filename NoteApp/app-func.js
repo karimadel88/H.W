@@ -1,3 +1,4 @@
+'use strict'
 // Get Saved Data from storage
 const getData = () => {
     const notesStor = localStorage.getItem('notes')
@@ -66,7 +67,7 @@ const sortNotes = (notes,sortBy)=>{
 const renderNotes = (notes,filters) =>{
     const root = document.getElementById('notes');
     notes = sortNotes(notes,filters.sortBy);
-    filteredNotes = notes.filter(note=>{
+    const filteredNotes = notes.filter(note=>{
         return note.title.toLowerCase().includes(filters.searchText.toLowerCase())
     })
 

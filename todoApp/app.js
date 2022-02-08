@@ -1,3 +1,4 @@
+'use strict'
 // Todos containt two chars text(string) and complated(boolean)
 const todos = getSavedData();
 

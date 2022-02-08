@@ -1,7 +1,7 @@
 
 const getSavedData = () => {
     const todosStor = localStorage.getItem('todos');
-    try{
+    try{    
         return todosStor ? JSON.parse(todosStor) : [];
     }catch(e){
         return [];

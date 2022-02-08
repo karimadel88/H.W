@@ -1,3 +1,4 @@
+'use strict'
 let notes = getData();
 const filters = {
     searchText: '',
