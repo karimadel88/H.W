@@ -7,13 +7,8 @@ const back = document.getElementById('back');
 const noteId = location.hash.substring(1);
 const dateEl = document.getElementById('last-edited');
 
-let note = notes.find((note)=>{
-    return noteId === note.id;
-})
-
-if(note === undefined){
-    location.assign('/index.html');
-}
+let note = notes.find(note => noteId === note.id)
+if(!note) location.assign('/index.html');
 
 noteTitle.value = note.title;
 noteText.value = note.body;
@@ -50,7 +45,7 @@ window.addEventListener('storage',(e)=>{
             return noteId === note.id;
         })
 
-        if(note === undefined){
+        if(!note){
             location.assign('/index.html');
         }
         noteTitle.value = note.title;
