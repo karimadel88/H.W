@@ -26,10 +26,11 @@ document.getElementById('check-box').addEventListener('change',(e)=>{
 document.getElementById('new-todo').addEventListener('submit',(e)=>{
     e.preventDefault();
     todos.push({
+        id: uuidv4(),
         text : e.target.elements.text.value,
         completed : false
     })
-    savedDate(todos)
+    saveData(todos)
     renderTodos(todos,filters);
     e.target.elements.text.value = ''
 })

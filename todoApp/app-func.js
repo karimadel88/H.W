@@ -1,3 +1,4 @@
+
 const getSavedData = () => {
     const todosStor = localStorage.getItem('todos');
     if(todosStor !== null)
@@ -12,14 +13,23 @@ const generteTodosDom = (todo)=>{
     const checkBox = document.createElement('input')
     const removeBtn = document.createElement('button');
     checkBox.setAttribute('type','checkbox')
-
+    checkBox.checked = todo.completed
     containerEl.appendChild(checkBox);
-
+    checkBox.addEventListener('change',(e)=>{
+        toggleTodo(todo.id);
+        saveData(todos);
+        renderTodos(todos,filters);
+    })
     txtEl.textContent = todo.text;
     containerEl.appendChild(txtEl);
 
     removeBtn.textContent = 'X'
     containerEl.appendChild(removeBtn);
+    removeBtn.addEventListener('click',(e)=>{
+        removeTodo(todo.id);
+        saveData(todos);
+        renderTodos(todos,filters);
+    })
     return containerEl;
 }
 
@@ -53,6 +63,26 @@ const renderTodos = (todos,filters) => {
     });
 }
 
-const savedDate = (todos) => {
+const saveData = (todos) => {
     localStorage.setItem('todos',JSON.stringify(todos));
+}
+
+// Remove 
+const removeTodo = (todoID) =>{
+    const index = todos.findIndex((todo)=>{
+        return todo.id === todoID;
+    })
+    if(index>-1){
+        todos.splice(index,1);
+    }
+}
+
+// Checked
+const toggleTodo = (todoID)=>{
+    const todo = todos.find((todo) =>{
+        return todo.id === todoID;
+    })
+    if(todo !== undefined){
+        todo.completed = !todo.completed;
+    }
 }

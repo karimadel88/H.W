@@ -26,12 +26,14 @@ const filters = {
 renderNotes(notes,filters);
 
 document.getElementById('create-note').addEventListener('click', e => {
+    const id = uuidv4();
     notes.push({
+        id : id,
         title:'',
         body:''
     })
     savedNotes(notes)
-    renderNotes(notes,filters)
+    location.assign(`/edit.html#${id}`)
 })
 
 document.getElementById('search-text').addEventListener('input',e =>{
