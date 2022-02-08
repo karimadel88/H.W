@@ -1,7 +1,11 @@
 
 const getSavedData = () => {
     const todosStor = localStorage.getItem('todos');
-    return todosStor ? JSON.parse(todosStor) : [];
+    try{
+        return todosStor ? JSON.parse(todosStor) : [];
+    }catch(e){
+        return [];
+    }
 }
 
 const generteTodosDom = (todo)=>{

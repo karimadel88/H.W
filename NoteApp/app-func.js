@@ -1,7 +1,12 @@
 // Get Saved Data from storage
 const getData = () => {
     const notesStor = localStorage.getItem('notes')
-    return (notesStor) ? JSON.parse(notesStor): [];
+    try{
+        return (notesStor) ? JSON.parse(notesStor): [];
+    }catch(e){
+        return [];
+    }
+   
 }
 
 // saved Data
